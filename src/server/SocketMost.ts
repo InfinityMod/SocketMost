@@ -15,7 +15,7 @@ import {
   Stream,
 } from '../modules/Messages'
 import { ExplorerServer } from './ExplorerServer'
-import { StartupAutomation } from './StartupAutomation'
+import { AutomationServer } from './StartupAutomation'
 
 export type DriverConfig = {
   version: string
@@ -200,7 +200,7 @@ export class SocketMost {
         this.extRetrieveAudio.bind(this),
       )
     } else if (this.config.startupAutomation) {
-      this.mostExplorer = new StartupAutomation(
+      this.mostExplorer = new AutomationServer(
         this.extSendControlMessage.bind(this),
         this.extGetRemoteSource.bind(this),
         this.extAllocate.bind(this),

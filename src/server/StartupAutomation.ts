@@ -1,4 +1,4 @@
-import { ExplorerServer, REQ_REGISTRY } from './explorerServer'
+import { ExplorerServer, REQ_REGISTRY } from './ExplorerServer'
 import {
     AllocResult,
     MasterFoundEvent,
@@ -41,7 +41,7 @@ const fBlocks: Record<number, string> = {
     0x71: 'Climate'
 }
 
-class AutomationServer extends ExplorerServer {
+export class AutomationServer extends ExplorerServer {
     registry?: Record<string, any> | null = null;
     commandStore?: Record<string, any> | null = null;
 
