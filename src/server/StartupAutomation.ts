@@ -8,6 +8,7 @@ import {
     RetrieveAudio,
     SocketMostSendMessage,
     Stream,
+    Os8104Events,
 } from '../modules/Messages'
 
 const fBlocks: Record<number, string> = {
@@ -88,7 +89,7 @@ export class AutomationServer extends ExplorerServer {
 
     newMessageRx(data: MasterFoundEvent | MostRxMessage | MessageOnly | AllocResult | NodePosition): void {
         if (this.registry == null) {
-            if (data.type == 2561) {
+            if (data.eventType == Os8104Events.SocketMostMessageRxEvent && data.type == 2561) {
                 this.registry = {}
                 console.log('Registry received', data)
                 let finalData = data.data.subarray(0, data.telLen)
