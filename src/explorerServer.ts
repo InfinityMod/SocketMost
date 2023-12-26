@@ -4,7 +4,7 @@ import { Server } from 'socket.io'
 
 const most = new SocketMostClient()
 const socket = dgram.createSocket('udp4')
-const io = new Server()
+const io:Server = new Server()
 
 most.on('newMessage', data => {
   console.log('explorer', data)
@@ -81,3 +81,5 @@ io.on('connection', socket => {
 io
 
 io.listen(5556)
+
+export {most, socket, io}

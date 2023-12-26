@@ -7,6 +7,7 @@
     "dist"
   ],
   "dependencies": {
+    "@types/socket.io": "^3.0.2",
     "onoff": "^6.0.3",
     "socket.io": "^4.7.1",
     "socketmost-client": "^1.0.6",
@@ -20,6 +21,7 @@
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "postinstall": "npm run build",
     "explorer:server": "ts-node src/explorerServer.ts",
+    "automatic:startup": "ts-node src/automaticStartup.ts",
     "test:messaging": "ts-node testing/test.ts"
   },
   "devDependencies": {
