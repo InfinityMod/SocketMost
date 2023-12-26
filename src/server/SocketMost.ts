@@ -15,6 +15,7 @@ import {
   Stream,
 } from '../modules/Messages'
 import { ExplorerServer } from './ExplorerServer'
+import { StartupAutomation } from './StartupAutomation'
 
 export type DriverConfig = {
   version: string
@@ -22,6 +23,7 @@ export type DriverConfig = {
   groupAddress: number
   freq: number
   mostExplorer: boolean
+  startupAutomation: boolean
 }
 
 const DEFAULT_CONFIG: DriverConfig = {
@@ -29,7 +31,8 @@ const DEFAULT_CONFIG: DriverConfig = {
   nodeAddress: 272,
   groupAddress: 34,
   freq: 48,
-  mostExplorer: true,
+  mostExplorer: false,
+  startupAutomation: true
 }
 
 export class SocketMost {
@@ -190,6 +193,14 @@ export class SocketMost {
 
     if (this.config.mostExplorer) {
       this.mostExplorer = new ExplorerServer(
+        this.extSendControlMessage.bind(this),
+        this.extGetRemoteSource.bind(this),
+        this.extAllocate.bind(this),
+        this.extStream.bind(this),
+        this.extRetrieveAudio.bind(this),
+      )
+    } else if (this.config.startupAutomation) {
+      this.mostExplorer = new StartupAutomation(
         this.extSendControlMessage.bind(this),
         this.extGetRemoteSource.bind(this),
         this.extAllocate.bind(this),

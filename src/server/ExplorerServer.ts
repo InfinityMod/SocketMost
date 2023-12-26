@@ -12,7 +12,7 @@ import {
   Stream,
 } from '../modules/Messages'
 
-const REQ_REGISTRY: SocketMostSendMessage = {
+export const REQ_REGISTRY: SocketMostSendMessage = {
   eventType: 'sendControlMessage',
   targetAddressHigh: 0x04,
   targetAddressLow: 0x00,
